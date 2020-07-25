@@ -9,7 +9,7 @@ class NoteService{
     async addNote(req,res){
         try {
             var user = await User.findOne({
-                email:req.body.email
+                _id:req.body.userId
             })
             if(user){
                 var note= new Note({
