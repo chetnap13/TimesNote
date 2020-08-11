@@ -20,7 +20,14 @@ const UserSchema = mongoose.Schema(
             type:Boolean,
             default:false
         },
-
+        isActive:{
+            type:Boolean,
+            default:true
+        },
+        isDelete:{
+            type:Boolean,
+            default:false
+        },
     },
     {
         timestamps: true

@@ -1,6 +1,7 @@
 "use strict"
 const Note = require('../model/note.model')
 const User = require('../model/user.model')
+const userService = require('../services/user.service')
 class NoteService{
     constructor(){
 
@@ -8,9 +9,7 @@ class NoteService{
 
     async addNote(req,res){
         try {
-            var user = await User.findOne({
-                _id:req.body.userId
-            })
+            var user = await userService.findValidUserById(req.body.userId)
             if(user){
                 var note= new Note({
                     title:req.body.title,
