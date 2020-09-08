@@ -5,7 +5,7 @@ var dotenv = require('dotenv')
 dotenv.config();
 
 /// Create event handler
-var sendEmail = function (subject, user, text) {
+var sendEmail = function (subject,text,user) {
    
         try {
             var transporter =  nodemailer.createTransport({
@@ -27,14 +27,14 @@ console.log(process.env.PASSWORD)
             }
              transporter.sendMail(mailOptions,  function (error, info) {
                 if (error) {
-                    return  (error.message)
+                    console.log(error)
                 }
                 else {
                     return ('Verfication mail has been sent to ' + user.email + '.');
                 }
             });
         } catch (error) {
-            return (error)
+            console.log(error)
         }
     
        

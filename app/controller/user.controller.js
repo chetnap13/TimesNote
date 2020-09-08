@@ -12,8 +12,25 @@ exports.userCreate = function(req,res)
       
         // Check for validation errors    
         var errors = req.validationErrors();
-        if (errors) { return res.status(400).send(errors); }
+        if (errors)
+         {
+            return res.status(400).send(errors); 
+          }
       else{
           userService.userCreate(req,res)
       }
+}
+exports.forgetPassword=function(req,res){
+  console.log("text")
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('email', 'Email cannot be blank').notEmpty();
+  var errors = req.validationErrors();
+  if (errors)
+   {
+      return res.status(400).send(errors); 
+    }
+else{
+    userService.forgetPassword(req,res)
+
+}
 }
